@@ -2,7 +2,7 @@ name: tweet
 on:
   workflow_dispatch:
     push:
-      branch:
+      branches:
         - main
       tags:
         - 'v[0-9]+.[0-9]+.[0-9]+'
