@@ -1,6 +1,6 @@
 name: tweet
 on:
-  tweet_dispatch:
+  workflow_dispatch:
     push:
       tags:
         - 'v[0-9]+.[0-9]+.[0-9]+'
