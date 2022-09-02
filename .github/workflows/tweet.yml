@@ -1,8 +1,7 @@
 name: tweet
 on:
-  workflow_dispatch:
-    release:
-      types: [published]
+  release:
+    types: [published]
 defaults:
   run: { shell: bash }
 
