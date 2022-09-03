@@ -2,6 +2,8 @@ name: tweet
 on:
   push:
     tags:
+      - 'release/v[0-9]+.[0-9]+.[0-9]+'
+      - 'refs/tags/[0-9]+.[0-9]+.[0-9]+'
 defaults:
   run: { shell: bash }
 
