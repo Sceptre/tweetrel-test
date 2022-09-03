@@ -1,9 +1,6 @@
 name: tweet
 on:
-  workflow_dispatch:
-    push:
-      tags:
-        - '*'
+  create:
 defaults:
   run: { shell: bash }
 
