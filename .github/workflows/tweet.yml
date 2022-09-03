@@ -1,6 +1,7 @@
 name: tweet
 on:
-  create:
+  push:
+    tags:
 defaults:
   run: { shell: bash }
 
