@@ -3,6 +3,7 @@
 import os
 
 import tweepy
+from fastcore.utils import 
 from ghapi.all import context_github
 
 
@@ -27,7 +28,9 @@ def tweet_text(payload):
 def send_tweet():
     """Tweet release."""
     payload = context_github.event
-    print(payload.action)
+    from pprint import pprint as pp
+    pp(payload.items())
+    return "DONE"
     # if payload.action == 'published': return twitter_api().update_status(tweet_text(payload))
 
 

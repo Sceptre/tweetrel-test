@@ -33,5 +33,5 @@ jobs:
         CONTEXT_GITHUB: ${{ toJson(github) }}
         CONTEXT_SECRETS: ${{ toJson(secrets) }}
       run: |
-        pip install -Uq tweetrel
+        pip install -Uqr .github/scripts/requirements.txt
         python .github/scripts/build-tweet.py
