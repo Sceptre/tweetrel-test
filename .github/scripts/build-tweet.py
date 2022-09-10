@@ -3,7 +3,6 @@
 import os
 
 import tweepy
-from fastcore.utils import 
 from ghapi.all import context_github
 
 
