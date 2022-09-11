@@ -34,9 +34,7 @@ def tweet_text(payload):
 def send_tweet():
     """Tweet release."""
     # payload = context_github.event
-    return twitter_api().update_status(
-        tweet_text(os.getenv("PAYLOAD", {})
-    )
-
+    payload = os.getenv("PAYLOAD", {})
+    return twitter_api().update_status(tweet_text(payload))
 
 send_tweet()
