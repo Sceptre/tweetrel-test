@@ -20,12 +20,7 @@ def tweet_text(payload):
     """Compile Tweet."""
     def_tmpl = "New #{repo} release: v{tag_name}. {html_url}\n\n{body}"
     tweet_tmpl = os.getenv('TWEETREL_TEMPLATE', def_tmpl)
-    rel_blank = {
-        "html_url": "NO RELEASE INFO",
-        "tag_name": "NO RELEASE INFO",
-        "body": "NO RELEASE INFO"
-    }
-    rel = payload.get("release", rel_blank)
+    rel = payload.release
     repo = payload.repository.full_name.split('/')[1]
     res = tweet_tmpl.format(repo=repo, tag_name=rel.tag_name, html_url=rel.html_url, body=rel.body)
     return res if len(res)<=280 else (res[:279] + "…")
