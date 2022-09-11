@@ -18,8 +18,13 @@ def tweet_text(payload):
     """Compile Tweet."""
     def_tmpl = "New #{repo} release: v{tag_name}. {html_url}\n\n{body}"
     tweet_tmpl = os.getenv('TWEETREL_TEMPLATE', def_tmpl)
-    rel = payload.release
-    _, repo = payload.repository.full_name.split('/')
+    rel_blank = {
+        "html_url": "NO RELEASE INFO",
+        "tag_name": "NO RELEASE INFO",
+        "body": "NO RELEASE INFO"
+    }
+    rel = payload.get("release", rel_blank)
+    repo = payload.repository.full_name.split('/')[1]
     res = tweet_tmpl.format(repo=repo, tag_name=rel.tag_name, html_url=rel.html_url, body=rel.body)
     return res if len(res)<=280 else (res[:279] + "…")
 
@@ -27,10 +32,7 @@ def tweet_text(payload):
 def send_tweet():
     """Tweet release."""
     payload = context_github.event
-    from pprint import pprint as pp
-    pp(payload.items())
-    return "DONE"
-    # if payload.action == 'published': return twitter_api().update_status(tweet_text(payload))
+    return twitter_api().update_status(tweet_text(payload))
 
 
 send_tweet()
