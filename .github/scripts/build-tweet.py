@@ -3,7 +3,7 @@
 import os
 
 import tweepy
-from ghapi.all import context_github, context_secrets
+from ghapi.all import context_secrets
 
 
 def twitter_api():
@@ -18,18 +18,25 @@ def twitter_api():
 
 def tweet_text(payload):
     """Compile Tweet."""
-    def_tmpl = "New #{repo} release: v{tag_name}. {html_url}\n\n{body}"
+    def_tmpl = "New #{repo} release: {tag_name}.\n{html_url}\n\n{body}"
     tweet_tmpl = os.getenv('TWEETREL_TEMPLATE', def_tmpl)
-    rel = payload.release
-    repo = payload.repository.full_name.split('/')[1]
-    res = tweet_tmpl.format(repo=repo, tag_name=rel.tag_name, html_url=rel.html_url, body=rel.body)
+    
+    res = tweet_tmpl.format(
+        repo=os.getenv("REPO", "Sceptre"), 
+        tag_name=payload["tag_name"], 
+        html_url=payload["html_url"], 
+        body=payload["body"]
+    )
+
     return res if len(res)<=280 else (res[:279] + "…")
 
 
 def send_tweet():
     """Tweet release."""
-    payload = context_github.event
-    return twitter_api().update_status(tweet_text(payload))
+    # payload = context_github.event
+    return twitter_api().update_status(
+        tweet_text(os.getenv("PAYLOAD", {})
+    )
 
 
 send_tweet()
