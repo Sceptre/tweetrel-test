@@ -3,12 +3,14 @@
 import os
 
 import tweepy
-from ghapi.all import context_github
+from ghapi.all import context_github, context_secrets
 
 
 def twitter_api():
     """Connect to Twitter API."""
-    consumer_key,consumer_secret,access_token,access_token_secret = context_secrets.TWITTER.split()
+    consumer_key,consumer_secret,access_token,access_token_secret = (
+        context_secrets.TWITTER.split()
+    )
     auth = tweepy.OAuthHandler(consumer_key,consumer_secret)
     auth.set_access_token(access_token,access_token_secret)
     return tweepy.API(auth)
