@@ -34,8 +34,8 @@ jobs:
         CONTEXT_SECRETS: ${{ toJson(secrets) }}
         PAYLOAD: > 
           gh api
-          -HF "Accept: application/vnd.github+json"
-          /repos/{owner}/{repo}/releases/tags/{tag}
+          -H "Accept: application/vnd.github+json"
+          owner={owner} repo={repo} tag={tag}
       run: |
         pip install -Uqr .github/scripts/requirements.txt
         python .github/scripts/build-tweet.py
