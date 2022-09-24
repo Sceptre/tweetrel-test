@@ -22,7 +22,7 @@ def tweet_text(payload):
     tweet_tmpl = os.getenv('TWEETREL_TEMPLATE', def_tmpl)
     
     res = tweet_tmpl.format(
-        repo=os.getenv("REPO", "Sceptre"), 
+        repo=payload["repo"], 
         tag_name=payload["tag_name"], 
         html_url=payload["html_url"], 
         body=payload["body"]
