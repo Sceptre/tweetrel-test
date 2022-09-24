@@ -3,6 +3,7 @@ executors:
   my-custom-executor:
     docker:
       - image: cimg/base:stable
+        resource_class: small
         auth:
           # ensure you have first added these secrets
           # visit app.circleci.com/settings/project/github/Sceptre/tweetrel-test/environment-variables
