@@ -15,7 +15,8 @@ jobs:
     steps:
       - checkout
       - run: |
-        <<pipeline.git.tag>>
+        << pipeline.git.tag >>
+
 
 workflows:
   my-custom-workflow:
