@@ -15,7 +15,7 @@ jobs:
     steps:
       - checkout
       - run: |
-        echo << pipeline.git.tag >>
+        echo $CIRCLE_TAG
 
 
 workflows:
