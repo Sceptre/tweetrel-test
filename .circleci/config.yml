@@ -15,7 +15,7 @@ jobs:
     steps:
       - checkout
       - run: |
-          env
+        echo <<pipeline.git.tag>>
 
 workflows:
   my-custom-workflow:
