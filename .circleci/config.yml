@@ -21,8 +21,8 @@ executors:
           
           For more, see: {html_url}. Here are the details:
           {body}
-        CONTEXT_GITHUB: ${{ toJson(github) }}
-        CONTEXT_SECRETS: ${{ toJson(secrets) }}
+      CONTEXT_GITHUB: ${{ toJson(github) }}
+      CONTEXT_SECRETS: ${{ toJson(secrets) }}
 jobs:
   tag-release-announcement:
 
