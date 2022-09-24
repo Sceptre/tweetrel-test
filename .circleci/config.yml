@@ -10,7 +10,6 @@ executors:
           password: $DOCKER_HUB_PASSWORD
     resource_class: small
     environment:
-      REPO: $CIRCLE_PROJECT_REPONAME
       PAYLOAD: |
         tag_name: $CIRCLE_TAG
         repo: $CIRCLE_PROJECT_REPONAME
@@ -18,9 +17,8 @@ executors:
         body: "Lots of exciting changes!"
       TWEETREL_TEMPLATE: |
           We are proud to announce the {tag_name} release of {repo}.
-          
-          For more, see: {html_url}. Here are the details:
-          {body}
+          For more, see: {html_url}. 
+          Here are the details: {body}
       CONTEXT_GITHUB: ${{ toJson(github) }}
       CONTEXT_SECRETS: ${{ toJson(secrets) }}
 jobs:
