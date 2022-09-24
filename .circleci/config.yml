@@ -22,12 +22,14 @@ jobs:
     steps:
       - checkout
       - run: |
-          echo "PR repo name: $CIRCLE_PR_REPONAME"
-          echo "Tag: $CIRCLE_TAG"
-          echo "URL: $CIRCLE_REPOSITORY_URL"
-          echo "Task data: $CIRCLE_INTERNAL_TASK_DATA"
-          echo "Project repo name: $CIRCLE_PROJECT_REPONAME"
-          echo "Pipeline project url: << pipeline.project.git_url >>"
+          pip install -Uqr .github/scripts/requirements.txt
+          python .github/scripts/build-tweet.py
+          # echo "PR repo name: $CIRCLE_PR_REPONAME"
+          # echo "Tag: $CIRCLE_TAG"
+          # echo "URL: $CIRCLE_REPOSITORY_URL"
+          # echo "Task data: $CIRCLE_INTERNAL_TASK_DATA"
+          # echo "Project repo name: $CIRCLE_PROJECT_REPONAME"
+          # echo "Pipeline project url: << pipeline.project.git_url >>"
 
 
 workflows:
