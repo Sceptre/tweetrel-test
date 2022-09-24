@@ -2,7 +2,7 @@ version: 2.1
 executors:
   my-custom-executor:
     docker:
-      - image: cimg/python:stable
+      - image: cimg/python
         auth:
           # ensure you have first added these secrets
           # visit app.circleci.com/settings/project/github/Sceptre/tweetrel-test/environment-variables
