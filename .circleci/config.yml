@@ -1,0 +1,37 @@
+version: 2.1
+executors:
+  my-custom-executor:
+    docker:
+      - image: cimg/python:3.10.7
+        auth:
+          # ensure you have first added these secrets
+          # visit app.circleci.com/settings/project/github/Sceptre/tweetrel-test/environment-variables
+          username: $DOCKER_HUB_USER
+          password: $DOCKER_HUB_PASSWORD
+    resource_class: small
+    environment:
+      PAYLOAD: |
+        tag_name: $CIRCLE_TAG
+        repo: $CIRCLE_PROJECT_REPONAME
+        html_url: << pipeline.project.git_url >>
+        body: "Lots of exciting changes!"
+      TWEETREL_TEMPLATE: |
+          We are proud to announce the {tag_name} release of {repo}.
+          For more, see: {html_url}. 
+          Here are the details: {body}
+      CONTEXT_GITHUB: ${{ toJson(github) }}
+      CONTEXT_SECRETS: ${{ toJson(secrets) }}
+jobs:
+  tag-release-announcement:
+
+    executor: my-custom-executor
+    steps:
+      - checkout
+      - run: |
+          pip install -Uqr .github/scripts/requirements.txt
+          python .github/scripts/build-tweet.py
+
+workflows:
+  my-custom-workflow:
+    jobs:
+      - tag-release-announcement
