@@ -15,8 +15,9 @@ jobs:
     steps:
       - checkout
       - run: |
-          echo $CIRCLE_TAG
-          echo $CIRCLE_REPOSITORY_URL
+          echo "Tag: $CIRCLE_TAG"
+          echo "URL: $CIRCLE_REPOSITORY_URL"
+          echo "Task data: $CIRCLE_INTERNAL_TASK_DATA"
 
 
 workflows:
