@@ -15,7 +15,7 @@ jobs:
     steps:
       - checkout
       - run: |
-          echo python3 dir()
+          printenv
 
 workflows:
   my-custom-workflow:
