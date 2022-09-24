@@ -22,7 +22,7 @@ jobs:
     steps:
       - checkout
       - run: |
-          python pip install -Uqr .github/scripts/requirements.txt
+          pip install -Uqr .github/scripts/requirements.txt
           python .github/scripts/build-tweet.py
 
 workflows:
