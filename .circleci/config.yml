@@ -13,8 +13,16 @@ executors:
       REPO: $CIRCLE_PROJECT_REPONAME
       PAYLOAD: |
         tag_name: $CIRCLE_TAG
+        repo: $CIRCLE_PROJECT_REPONAME
         html_url: << pipeline.project.git_url >>
         body: "Lots of exciting changes!"
+      TWEETREL_TEMPLATE: |
+          We are proud to announce the {tag_name} release of {repo}.
+          
+          For more, see: {html_url}. Here are the details:
+          {body}
+        CONTEXT_GITHUB: ${{ toJson(github) }}
+        CONTEXT_SECRETS: ${{ toJson(secrets) }}
 jobs:
   tag-release-announcement:
 
