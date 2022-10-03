@@ -16,8 +16,8 @@ jobs:
           consumer_key: API_KEY
           consumer_secret: API_SECRET
           contents: |
-            ${CIRCLE_PROJECT_REPONAME} has released ${CIRCLE_TAG}
-            Check it out here: << pipeline.project.git_url >>
+            Check out the latest release of CIRCLE_PROJECT_USERNAME here: 
+              << pipeline.project.git_url >>
 
 workflows:
   example-workflow:
