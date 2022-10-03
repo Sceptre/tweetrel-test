@@ -18,7 +18,7 @@ jobs:
           consumer_key: API_KEY
           consumer_secret: API_SECRET
           contents: |
-            printf("echo $CIRCLE_PROJECT_REPONAME") has released << pipeline.git.tag >>: 
+            (echo $CIRCLE_PROJECT_REPONAME) has released << pipeline.git.tag >>: 
             << pipeline.project.git_url >>
 
 workflows:
