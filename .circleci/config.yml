@@ -1,10 +1,13 @@
 version: '2.1'
 orbs:
-  tweeter-orb: 'jollof-guy/tweeter-orb@main'
+  tweeter-orb: jollof-guy/tweeter-orb@0.2.1
+
 workflows:
   use-my-orb:
     jobs:
       - tweeter-orb/tweet:
           key: API_KEY
           secret: API_SECRET
-          tweet: Hello World
+          tweet: |
+            Announcing a new $CIRCLE_PROJECT_REPONAME release: $CIRCLE_TAG
+            Find out more: << pipeline.project.git_url >>
