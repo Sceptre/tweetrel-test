@@ -28,7 +28,7 @@ workflows:
   
   pointers:
     jobs:
-      - prod:
+      - example-job:
           filters:
             tags:
               only: ".+"
