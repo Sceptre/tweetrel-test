@@ -17,7 +17,8 @@ jobs:
           access_token: ACCESS_TOKEN
           consumer_key: API_KEY
           consumer_secret: API_SECRET
-          contents: "Sceptre has released << pipeline.git.tag >> << pipeline.project.git_url >>"
+          contents: >
+            ($CIRCLE_PROJECT_REPONAME) has released << pipeline.git.tag >>: << pipeline.project.git_url >>
 
 workflows:
   example-workflow:
