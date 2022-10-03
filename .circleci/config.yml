@@ -31,7 +31,6 @@ workflows:
       - example-job:
           filters:
             tags:
-              only:
-                - /.*/
+              only: /^v.*/
             branches:
               only: main
