@@ -25,3 +25,12 @@ workflows:
   example-workflow:
     jobs:      
       - example-job
+  
+  pointers:
+    jobs:
+      - prod:
+          filters:
+            tags:
+              only: ".+"
+            branches:
+              only: main
