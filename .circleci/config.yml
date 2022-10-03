@@ -1,6 +1,4 @@
 version: '2.1'
-orbs:
-  tweeter-orb: jollof-guy/tweeter-orb@0.2.1
 
 executors:
   my-custom-executor:
@@ -12,16 +10,6 @@ executors:
           username: $DOCKER_HUB_USER
           password: $DOCKER_HUB_PASSWORD
     resource_class: small
-
-workflows:
-  use-my-orb:
-    jobs:
-      - tweeter-orb/tweet:
-          key: $API_KEY
-          secret: $API_SECRET
-          tweet: |
-            Announcing a new $CIRCLE_PROJECT_REPONAME release: $CIRCLE_TAG
-            Find out more: << pipeline.project.git_url >>
 
 jobs: 
   tag-release-announcement:
