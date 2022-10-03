@@ -3,6 +3,13 @@ version: '2.1'
 orbs:
   twitter-orb: jakousa/twitter-orb@1.0.1
 
+executors:
+    twurl:
+        description: |
+            Executor with twurl.
+        docker:
+            - image: jakousa/twurl:latest
+
 jobs:
   example-job:
     docker:
