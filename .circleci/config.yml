@@ -2,6 +2,17 @@ version: '2.1'
 orbs:
   tweeter-orb: jollof-guy/tweeter-orb@0.2.1
 
+executors:
+  my-custom-executor:
+    docker:
+      - image: cimg/base:stable
+        auth:
+          # ensure you have first added these secrets
+          # visit app.circleci.com/settings/project/github/Sceptre/tweetrel-test/environment-variables
+          username: $DOCKER_HUB_USER
+          password: $DOCKER_HUB_PASSWORD
+    resource_class: small
+
 workflows:
   use-my-orb:
     jobs:
@@ -11,3 +22,12 @@ workflows:
           tweet: |
             Announcing a new $CIRCLE_PROJECT_REPONAME release: $CIRCLE_TAG
             Find out more: << pipeline.project.git_url >>
+
+jobs: 
+  tag-release-announcement:
+    executor: my-custom-executor
+    steps:
+      - checkout
+      - run: |
+          echo $API_KEY
+          echo $API_SECRET
