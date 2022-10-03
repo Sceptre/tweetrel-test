@@ -12,12 +12,13 @@ jobs:
     environment:
       compiled_tweet: $CIRCLE_PROJECT_REPONAME
     steps:
+      - export COMPILED_TWEET=${CIRCLE_PROJECT_REPONAME} has released << pipeline.git.tag >>. Check it out! << pipeline.git.url >>
       - twitter-orb/tweet:
           access_secret: TOKEN_SECRET
           access_token: ACCESS_TOKEN
           consumer_key: API_KEY
           consumer_secret: API_SECRET
-          contents: {{ compiled_tweet }}
+          contents: $COMPILED_TWEET
 
 workflows:
   example-workflow:
