@@ -19,3 +19,8 @@ jobs:
       - run: |
           echo $API_KEY
           echo $API_SECRET
+
+workflows:
+  my-custom-workflow:
+    jobs:
+      - tag-release-announcement
