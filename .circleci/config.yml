@@ -17,7 +17,7 @@ jobs:
           access_token: ACCESS_TOKEN
           consumer_key: API_KEY
           consumer_secret: API_SECRET
-          contents: ${compiled_tweet}
+          contents: {{ compiled_tweet }}
 
 workflows:
   example-workflow:
