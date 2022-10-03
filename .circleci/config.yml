@@ -1,3 +1,5 @@
+version: '2.1'
+
 orbs:
   twitter-orb: jakousa/twitter-orb@1.0.1
 
@@ -8,10 +10,10 @@ jobs:
       - image: cimg/base:stable
     steps:
       - twitter-orb/tweet:
-          access_secret: $API_KEY
-          access_token: $API_SECRET
-          consumer_key: $ACCESS_TOKEN
-          consumer_secret: $TOKEN_SECRET
+          access_secret: API_KEY
+          access_token: API_SECRET
+          consumer_key: ACCESS_TOKEN
+          consumer_secret: TOKEN_SECRET
           contents: |
             $CIRCLE_PROJECT_REPONAME has released $CIRCLE_TAG 
             Check it out here: << pipeline.project.git_url >>
