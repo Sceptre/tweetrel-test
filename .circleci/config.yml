@@ -22,9 +22,9 @@ jobs:
             << pipeline.project.git_url >>
 
 workflows:
-  example-workflow:
-    jobs:      
-      - example-job
+  # example-workflow:
+  #   jobs:      
+  #     - example-job
   
   pointers:
     jobs:
