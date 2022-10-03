@@ -1,6 +1,6 @@
 version: '2.1'
 orbs:
-  tweeter-orb: 'jollof-guy/tweeter-orb@dev:alpha'
+  tweeter-orb: 'jollof-guy/tweeter-orb@main'
 workflows:
   use-my-orb:
     jobs:
