@@ -29,6 +29,7 @@ workflows:
   pointers:
     jobs:
       - example-job:
+          context: sceptreorg-twitter
           filters:
             tags:
               only: /v.*/
