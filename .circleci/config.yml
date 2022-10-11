@@ -18,7 +18,6 @@ jobs:
           consumer_key: API_KEY
           consumer_secret: API_SECRET
           contents: |
-            echo $ACCESS_TOKEN
             (echo $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME) has released << pipeline.git.tag >>:
             << pipeline.project.git_url >>
 
@@ -26,7 +25,7 @@ workflows:
   pointers:
     jobs:
       - example-job:
-          context: erica-twitter
+          context: sceptreorg-twitter
           filters:
             tags:
               only: /v.*/
