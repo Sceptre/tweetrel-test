@@ -6,7 +6,7 @@ orbs:
 jobs:
   log:
     docker:
-      - image: cimg/base:latest
+      - image: cimg/node:17.2.0
     resource_class: small
     steps:
       - run: echo << pipeline.git.branch >> << pipeline.git.tag >> 
