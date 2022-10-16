@@ -22,8 +22,10 @@ workflows:
   announcements:
     when:
       and:
-        equal: [ main, << pipeline.git.branch >> ]
-        matches: [ /^v[0-9]+\.[0-9]+\.[0-9]+/, << pipeline.git.tag >> ] 
+        - equal: [main, << pipeline.git.branch >>]
+        - matches:
+            pattern: "/^v[0-9]+\.[0-9]+\.[0-9]+/"
+            value: << pipeline.git.tag >> 
     jobs:
       - twitter:
           context: erica-twitter
