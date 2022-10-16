@@ -4,12 +4,6 @@ orbs:
   twitter-orb: jakousa/twitter-orb@1.0.1
 
 jobs:
-  log:
-    docker:
-      - image: cimg/node:17.2.0
-    resource_class: small
-    steps:
-      - run: echo << pipeline.git.branch >> << pipeline.git.tag >> 
   twitter:
     docker:
       - image: jakousa/twurl:latest
@@ -25,16 +19,13 @@ jobs:
             << pipeline.project.git_url >>/releases/tag/<< pipeline.git.tag >>
 
 workflows:
-  logging:
-    jobs:
-      - log  
   announcements:
-    when:
-      and:
-        - equal: [main, << pipeline.git.branch >>]
-        - matches:
-            pattern: ^v[0-9]+\.[0-9]+\.[0-9]+
-            value: << pipeline.git.tag >> 
     jobs:
       - twitter:
           context: erica-twitter
+          filters:
+            tags:
+              only: /^v[0-9]+\.[0-9]+\.[0-9]+/
+            branches:
+              ignore: /.*/
+
