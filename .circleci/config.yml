@@ -4,7 +4,7 @@ orbs:
   twitter-orb: jakousa/twitter-orb@1.0.1
 
 jobs:
-  example-job:
+  twitter:
     docker:
       - image: jakousa/twurl:latest
     resource_class: small
@@ -21,10 +21,10 @@ jobs:
 workflows:  
   announcements:
     jobs:
-      - example-job:
+      - twitter:
           context: sceptreorg-twitter
           filters:
             tags:
-              only: /v.*/^v[0-9]+\.[0-9]+\.[0-9]+/
+              only: /^v[0-9]+\.[0-9]+\.[0-9]+/
             branches:
               ignore: /[^(main)]/
