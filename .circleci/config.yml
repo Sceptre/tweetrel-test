@@ -20,6 +20,8 @@ jobs:
 
 workflows:  
   announcements:
+    when:
+      equal: [ main, << pipeline.git.branch >> ]
     jobs:
       - twitter:
           context: erica-twitter
