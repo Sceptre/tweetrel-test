@@ -6,15 +6,10 @@ orbs:
 jobs:
   example-job:
     docker:
-      # replace with your preferred image
       - image: jakousa/twurl:latest
     resource_class: small
     steps:      
       - twitter-orb/tweet:
-          access_secret: TOKEN_SECRET
-          access_token: ACCESS_TOKEN
-          consumer_key: API_KEY
-          consumer_secret: API_SECRET
           contents: |
             (echo $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME) has released << pipeline.git.tag >>:
             << pipeline.project.git_url >>/releases/tag/<< pipeline.git.tag >>
@@ -23,7 +18,7 @@ workflows:
   pointers:
     jobs:
       - example-job:
-          context: sceptreorg-twitter
+          context: erica-twitter
           filters:
             tags:
               only: /v.*/
