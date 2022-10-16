@@ -24,7 +24,10 @@ jobs:
             (echo $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME) has released << pipeline.git.tag >>:
             << pipeline.project.git_url >>/releases/tag/<< pipeline.git.tag >>
 
-workflows:  
+workflows:
+  logging:
+    jobs:
+      - log  
   announcements:
     when:
       and:
