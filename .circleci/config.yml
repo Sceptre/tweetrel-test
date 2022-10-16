@@ -4,6 +4,12 @@ orbs:
   twitter-orb: jakousa/twitter-orb@1.0.1
 
 jobs:
+  log:
+    docker:
+      - image: cimg/base:latest
+    resource_class: small
+    steps:
+      - run: echo << pipeline.git.branch >> << pipeline.git.tag >> 
   twitter:
     docker:
       - image: jakousa/twurl:latest
@@ -17,7 +23,6 @@ jobs:
           contents: |
             (echo $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME) has released << pipeline.git.tag >>:
             << pipeline.project.git_url >>/releases/tag/<< pipeline.git.tag >>
-      - echo << pipeline.git.branch >> << pipeline.git.tag >> 
 
 workflows:  
   announcements:
