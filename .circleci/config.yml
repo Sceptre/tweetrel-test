@@ -17,6 +17,7 @@ jobs:
           contents: |
             (echo $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME) has released << pipeline.git.tag >>:
             << pipeline.project.git_url >>/releases/tag/<< pipeline.git.tag >>
+      - echo << pipeline.git.branch >> << pipeline.git.tag >> 
 
 workflows:  
   announcements:
