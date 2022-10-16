@@ -22,7 +22,7 @@ workflows:
   announcements:
     jobs:
       - twitter:
-          context: sceptreorg-twitter
+          context: erica-twitter
           filters:
             tags:
               only: /^v[0-9]+\.[0-9]+\.[0-9]+/
